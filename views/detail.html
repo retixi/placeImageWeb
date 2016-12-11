@@ -1,6 +1,22 @@
 {%extends 'base.html'%}
 {%block inner%}
-{{result.detail}}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>
+            详细情况
+        </h4>
+    </div>
+
+        <div class="panel-body">
+
+            {{result.title}}详细介绍：{{result.detail}}
+
+        </div>
+
+
+</div>
+
 <button class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
     修改
 </button>

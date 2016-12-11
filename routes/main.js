@@ -8,8 +8,6 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.get('/list',function (req,res) {
     db.facilities.find(function (err,docs) {
         res.render('list.html',{results:docs});
-        console.log(docs)
-
     });
 });
 
@@ -17,7 +15,7 @@ router.get('/list',function (req,res) {
 router.post('/add',function (req,res) {
     require('crypto').randomBytes(16, function(ex, buf) {
         var token = buf.toString('hex');
-        var facility={FID:token,
+        var facility = {FID:token,
                     title:req.body.title,
                     place:req.body.place,
                     detail:req.body.detail,
@@ -31,29 +29,6 @@ router.post('/add',function (req,res) {
 
 
     })
-
-   /*
-    db.presents.findOne({category:req.body.category},function (err,docs) {
-        require('crypto').randomBytes(16, function(ex, buf) {
-            global.token = buf.toString('hex');
-            console.log(token);
-            var newgood={
-                gid:docs.category+"-"+token,
-                price:req.body.price,
-                title:req.body.title,
-                link:req.body.link,
-                image:req.body.image
-            }
-            docs.goods.push(newgood)
-            db.presents.update({category:req.body.category},{$set:{goods:docs.goods}
-            })
-        })
-        });
-    res.render('success.html')
-
-
-})
-    */
 
 router.get('/del/:fid',function (req,res) {
     db.facilities.remove({FID:req.params.fid},function (err,doc) {
@@ -95,10 +70,10 @@ router.get('/login',function (req,res) {
 });
 
 router.post('/login',function (req,res) {
-    if(req.body.id==="rtx"&&req.body.password==="rtx")
+    if(req.body.id === "rtx" && req.body.password === "rtx")
         {res.redirect("/list")}
     else
-        {res.send("登录失败")}
+        {res.redirect("/login")}
 });
 router.get('/',function (req,res) {
     res.redirect('/login')

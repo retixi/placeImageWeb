@@ -9,11 +9,11 @@
 <div class="col-md-12">
 <div class="panel panel-default">
 <div class="panel-heading">
-    <h4>
-        <a href="{{each.link}}">{{each.title}}</a>
-    </h4>
+
+    <a href="{{each.link}}">{{each.title}} </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
-        删除
+         删除
     </button>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -43,7 +43,6 @@
     FID：{{each.FID}}<br>
     名字：{{each.title}}<br>
     地址：{{each.place}}<br>
-    链接：{{each.link}}<br>
 
     </div>
 
