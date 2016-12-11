@@ -1,0 +1,89 @@
+{%extends 'base.html'%}
+{%block inner%}
+
+
+
+
+{%for each in results%}
+<div class="row">
+<div class="col-md-12">
+<div class="panel panel-default">
+<div class="panel-heading">
+    <h4>
+        <a href="{{each.link}}">{{each.title}}</a>
+    </h4>
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+        删除
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">确认要删除吗？</h4>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">否</button>
+                    <a href="/del/{{each.FID}}" type="button" class="btn btn-danger">是</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div class="panel panel-default">
+
+    <div class="panel-body">
+
+    FID：{{each.FID}}<br>
+    名字：{{each.title}}<br>
+    地址：{{each.place}}<br>
+    链接：{{each.link}}<br>
+
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+{%endfor%}
+<button class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal1">
+    添加
+</button>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    添加项目
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="/add">
+
+                    <input  name="title" placeholder=" 名字"><br><br>
+                    <input  name="place" placeholder=" 地点"><br><br>
+                    <input  name="detail" placeholder=" 详情"><br><br>
+                    <input type="submit" value="增加" class="btn btn-success">
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+{%endblock%}
